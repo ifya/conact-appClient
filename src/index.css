@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-background-accent;
+  }
+
+  body {
+    @apply bg-background-tertiary text-text-normal;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background-tertiary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-background-accent rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-channel-default;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-brand-primary/30;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary/50;
+  }
+
+  .btn-primary {
+    @apply bg-brand-primary hover:bg-brand-hover text-white;
+  }
+
+  .btn-secondary {
+    @apply bg-background-accent hover:bg-background-primary text-text-normal;
+  }
+
+  .btn-danger {
+    @apply bg-text-danger hover:bg-red-600 text-white;
+  }
+
+  .input {
+    @apply w-full px-3 py-2 bg-background-tertiary border border-background-accent rounded focus:outline-none focus:border-brand-primary text-text-normal placeholder-text-muted;
+  }
+
+  .sidebar-item {
+    @apply flex items-center gap-2 px-2 py-1.5 rounded cursor-pointer text-channel-default hover:text-channel-selected hover:bg-background-accent transition-colors;
+  }
+
+  .sidebar-item.active {
+    @apply text-channel-selected bg-background-accent;
+  }
+
+  .avatar {
+    @apply rounded-full bg-brand-primary flex items-center justify-center text-white font-medium;
+  }
+
+  .tooltip {
+    @apply absolute z-50 px-2 py-1 text-sm bg-background-floating text-text-normal rounded shadow-lg;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Electron window dragging */
+.titlebar {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}
